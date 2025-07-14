@@ -30,6 +30,24 @@ export const CartSlice = createSlice({
         }
     
     },
+    handleIncrement: (state, action) => {
+        const { itemId } = action.payload;
+        const item = state.items.find(item => item.id === itemId);
+        if (item) {
+            item.quantity += 1;
+        }
+    },
+    handleDecrement: (state, action) => {
+        const { itemId } = action.payload;
+        const item = state.items.find(item => item.id === itemId);
+        if (item) {
+            if (item.quantity > 1) {
+                item.quantity -= 1;
+            } else if (item.quantity === 1) {
+                state.items = state.items.filter(item => item.id !== itemId);
+            }
+        }
+    },
   },
 });
 
