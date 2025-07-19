@@ -15,7 +15,13 @@ export const CartSlice = createSlice({
             existingItem.quantity++;
         } else {
             // If item does not exist, add it to the cart with quantity 1
-            state.items.push({ name, image, cost, quantity: 1 });
+            state.items.push({ 
+                id: Date.now(),
+                name,
+                 image,
+                 cost: parseFloat(cost.replace('$', '')),
+                 quantity: 1
+            });
         }
     },
     removeItem: (state, action) => {
