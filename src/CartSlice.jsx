@@ -19,7 +19,7 @@ export const CartSlice = createSlice({
                 id: Date.now(),
                 name,
                  image,
-                 cost: parseFloat(cost.replace('$', '')),
+                 cost,
                  quantity: 1
             });
         }
