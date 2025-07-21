@@ -273,6 +273,10 @@ function ProductList({ onHomeClick }) {
     }));
     };
 
+    const isInCart = (productName) => {
+        return cartItems.some(item => item.name === productName);
+    };
+
     const calculateTotalQuantity = () => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
     };
@@ -319,12 +323,13 @@ function ProductList({ onHomeClick }) {
                                 <div className="product-title">{plant.name}</div> {/* Display plant name */}
                                 {/* Display other plant details like description and cost */}
                                 <div className="product-description">{plant.description}</div> {/* Display plant description */}
-                                <div className="product-cost">${plant.cost}</div> {/* Display plant cost */}
+                                <div className="product-cost">{plant.cost}</div> {/* Display plant cost */}
                                 <button
-                                    className="product-button"
+                                    className={`add-to-cart-btn ${isInCart(plant.name) ? 'disabled' : ''}`}
+                                    disabled={isInCart(plant.name)}
                                     onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
                                 >
-                                    Add to Cart
+                                    {isInCart(plant.name) ? 'Added to Cart' : 'Add to Cart'}
                                 </button>
                                 </div>
                             ))}
