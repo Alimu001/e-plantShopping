@@ -241,10 +241,4 @@
     margin-top: 40px;
   }
 
-  .add-to-cart-btn.disabled {
-  background-color: gray;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
   
